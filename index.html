@@ -15,6 +15,27 @@
       padding: 0px;
       margin: 0px;
     }
+    body {
+    margin: 0;
+    margin-bottom: 60px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+    }    
+
+    .container {
+    width: auto;
+    max-width: 780px;
+    padding: 0 15px;
+    }
+
+    p {
+    margin-top: 0;
+    margin-bottom: 0rem !important;
+    }
 
     .topsection {
       padding: 10px;
@@ -24,10 +45,19 @@
     #one p {
       font-size: 1.5em;
       font-family: sans-serif;
+      margin-bottom: 0rem !important;
       color: #fff;
     }
     
-    
+    .footer {
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #4169E1;
+    }
     </style> 
   </head>
   <body>
@@ -49,7 +79,11 @@
 <!-- Github Repos Section-->
 
 <!-- End Github Repos Section-->
-
+<footer class="footer text-center">
+    <div class="container">
+      <span>GitHub API &copy;</span>
+    </div>
+  </footer>
 
       
     <!-- Optional JavaScript -->
@@ -59,7 +93,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     <script src="app.js"></script>
     <script src="ui.js"></script>
-    <script src="github.js"></script>
-    <script scr="storage.js"></script>
   </body>
 </html>
