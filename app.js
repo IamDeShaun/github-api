@@ -68,7 +68,7 @@ class UI {
             <div class="card card-body mb-2">
             <div class="row">
               <div class="col-md-3">
-                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                <a href="${repo.html_url}" target="_blank"><strong>${repo.name}</strong></a>
               </div>
               <div class="col-md-9">
               <span>${repo.description}</span><br><br>
