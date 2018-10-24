@@ -5,15 +5,21 @@ class Github {
   constructor() {
     this.client_id = 'bc79a71d92029fa69223';
     this.client_secret = '4e63f1f5495f78dbf39607c22fd1eb9b965866ff';
+    this.repos_count = 8;
+    this.repos_sort = 'created: asc'
   }
    
   async getUser(){
-    const profileResponse = await fetch('https://api.github.com/users/iamdeshaun?client_id=${this.client_id}&client_secret=${this.client_secret}');
+    const profileResponse = await fetch(`https://api.github.com/users/iamdeshaun?client_id=${this.client_id}&client_secret=${this.client_secret}`);
+
+    const repoResponse = await fetch(`https://api.github.com/users/iamdeshaun/repos?per_page=${this.repos_count}&sort=${this.repos_sort}&client_id=${this.client_id}&client_secret=${this.client_secret}`);
 
     const profile = await profileResponse.json();
+    const repos = await repoResponse.json();
 
     return {
-      profile
+      profile,
+      repos
     }
   }
 };
@@ -23,7 +29,10 @@ class UI {
 
   constructor() {
     this.profile = document.getElementById('profile');
+    this.bio = 'Hi. My name is DeShaun Jones and I’m a versatile Front-end Developer with 5+ years of experience designing, developing, and managing complex web site. I specialize in building custom WordPress themes from the ground up. Currently I am a web developer at Resnnelaer Polytech Institute, developing and maintaining websites using Drupal. I love creating for the web!';
+    this.skill = 'PHP, Laravel, SCSS, HTML5, CSS3, JavaScript, jQuery, GIT, WordPress, Drupal, Adobe Creative Cloud';
   } 
+  // Show User Profile 
 
   showProfile(user){
     this.profile.innerHTML = `
@@ -31,31 +40,55 @@ class UI {
     <div class="card card-body mb-3">
       <div class="row">
         <div class="col-md-3">
-          <img class="img-fluid mb-2" src="${user.avatar_url}">
-          <a href="${user.html_url}" target="_blank" class="btn btn-primary btn-block mb-4">View Profile</a>
+          <img class="img-fluid rounded-circle mb-2" src="${user.avatar_url}">
+          <a href="${user.html_url}" target="_blank" class="btn btn-primary btn-block mb-4">View Github Profile</a>
         </div>
         <div class="col-md-9">
-          <span class="badge badge-primary">Public Repos: ${user.public_repos}</span>
-          <span class="badge badge-secondary">Public Gists: ${user.public_gists}</span>
-          <span class="badge badge-success">Followers: ${user.followers}</span>
-          <span class="badge badge-info">Following: ${user.following}</span>
-          <br><br>
           <ul class="list-group">
-          <li class="list-group-item">About Me: ${user.bio}</li>
-            <li class="list-group-item">Company: ${user.company}</li>
-            <li class="list-group-item">Website/Blog: <a href="${user.blog}" target="_blank">${user.blog}</a></li>
-            <li class="list-group-item">Location: ${user.location}</li>
-            <li class="list-group-item">Member Since: ${user.created_at}</li>
+          <li class="list-group-item"><strong>About Me: </strong>${this.bio}</li>
+          <li class="list-group-item"><strong>Skills:</strong> ${this.skill}</li>
+            <li class="list-group-item"><strong>Website:</strong> <a href="${user.blog}" target="_blank">${user.blog}</a></li>
+            <li class="list-group-item"><strong>Location:</strong> ${user.location}</li>
+            <li class="list-group-item"><strong>Member Since:</strong> ${user.created_at}</li>
           </ul>
         </div>
       </div>
     </div>
-    <h3 class="page-heading mb-3">Latest Repos</h3>
+    <br>
+    <h3 class="page-heading mb-3 mt-2">Latest Repos</h3>
     <div id="repos"></div>
     </div>
   `;
   }
+
+    // Show user repos
+    showRepos(repos) {
+      let output = '';
+  
+      repos.forEach(function(repo) {
+        output += `
+            <div class="card card-body mb-2">
+            <div class="row">
+              <div class="col-md-3">
+                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+              </div>
+              <div class="col-md-9">
+              <span>${repo.description}</span><br><br>
+              <span class="badge badge-primary">Stars: ${repo.stargazers_count}</span>
+              <span class="badge badge-secondary">Watchers: ${repo.watchers_count}</span>
+              <span class="badge badge-success">Forks: ${repo.forms_count}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+  
+      // Output repos
+      document.getElementById('repos').innerHTML = output;
+    }
+  
 };
+
 
 // Init Github
 const git = new Github;
@@ -68,6 +101,7 @@ git.getUser()
 .then(data => {
   console.log(data);
   ui.showProfile(data.profile);
+  ui.showRepos(data.repos);
 });
 
 
