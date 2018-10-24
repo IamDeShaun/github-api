@@ -10,9 +10,9 @@ class Github {
   }
    
   async getUser(){
-    const profileResponse = await fetch(`https://api.github.com/users/iamdeshaun?client_id=${this.client_id}&client_secret=${this.client_secret}`);
+    const profileResponse = await fetch(`https://api.github.com/users/agrant12?client_id=${this.client_id}&client_secret=${this.client_secret}`);
 
-    const repoResponse = await fetch(`https://api.github.com/users/iamdeshaun/repos?per_page=${this.repos_count}&sort=${this.repos_sort}&client_id=${this.client_id}&client_secret=${this.client_secret}`);
+    const repoResponse = await fetch(`https://api.github.com/users/agrant12/repos?per_page=${this.repos_count}&sort=${this.repos_sort}&client_id=${this.client_id}&client_secret=${this.client_secret}`);
 
     const profile = await profileResponse.json();
     const repos = await repoResponse.json();
@@ -29,8 +29,7 @@ class UI {
 
   constructor() {
     this.profile = document.getElementById('profile');
-    this.bio = 'Hi. My name is DeShaun Jones and I’m a versatile Front-end Developer with 5+ years of experience designing, developing, and managing complex web site. I specialize in building custom WordPress themes from the ground up. Currently I am a web developer at Rensselaer Polytechnic Institute (RPI), developing and maintaining websites using Drupal. I love creating for the web!';
-    this.skill = 'PHP, Laravel, SCSS, HTML5, CSS3, JavaScript, jQuery, GIT, WordPress, Drupal, Adobe Creative Cloud';
+    this.skill = 'PHP, Laravel, SCSS, HTML5, CSS3, JavaScript, Angular, Python, jQuery, GIT, WordPress, Drupal, Adobe Creative Cloud';
   } 
   // Show User Profile 
 
@@ -45,10 +44,9 @@ class UI {
         </div>
         <div class="col-md-9">
           <ul class="list-group">
-          <li class="list-group-item"><strong>About Me: </strong>${this.bio}</li>
+          <li class="list-group-item"><strong>About Me: </strong>${user.bio}</li>
           <li class="list-group-item"><strong>Skills:</strong> ${this.skill}</li>
-            <li class="list-group-item"><strong>Website:</strong> <a href="${user.blog}" target="_blank">${user.blog}</a></li>
-            <li class="list-group-item"><strong>Location:</strong> ${user.location}</li>
+            <li class="list-group-item"><strong>Location:</strong> Resting In Paradise</li>
             <li class="list-group-item"><strong>Member Since:</strong> ${user.created_at}</li>
           </ul>
         </div>
