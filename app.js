@@ -29,7 +29,7 @@ class UI {
 
   constructor() {
     this.profile = document.getElementById('profile');
-    this.bio = 'Hi. My name is DeShaun Jones and I’m a versatile Front-end Developer with 5+ years of experience designing, developing, and managing complex web site. I specialize in building custom WordPress themes from the ground up. Currently I am a web developer at Resnnelaer Polytech Institute, developing and maintaining websites using Drupal. I love creating for the web!';
+    this.bio = 'Hi. My name is DeShaun Jones and I’m a versatile Front-end Developer with 5+ years of experience designing, developing, and managing complex web site. I specialize in building custom WordPress themes from the ground up. Currently I am a web developer at Rensselaer Polytechnic Institute (RPI), developing and maintaining websites using Drupal. I love creating for the web!';
     this.skill = 'PHP, Laravel, SCSS, HTML5, CSS3, JavaScript, jQuery, GIT, WordPress, Drupal, Adobe Creative Cloud';
   } 
   // Show User Profile 
