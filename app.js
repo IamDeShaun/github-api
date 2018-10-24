@@ -44,7 +44,7 @@ class UI {
         </div>
         <div class="col-md-9">
           <ul class="list-group">
-          <li class="list-group-item"><strong>About Me: </strong>${user.bio}</li>
+          <li class="list-group-item"><strong>About Sean: </strong>${user.bio}</li>
           <li class="list-group-item"><strong>Skills:</strong> ${this.skill}</li>
             <li class="list-group-item"><strong>Location:</strong> Resting In Paradise</li>
             <li class="list-group-item"><strong>Member Since:</strong> ${user.created_at}</li>
